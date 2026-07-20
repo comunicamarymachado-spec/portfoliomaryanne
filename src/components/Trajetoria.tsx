@@ -30,9 +30,10 @@ export default function Trajetoria() {
                 </p>
               </div>
 
-              {/* TROQUE AQUI: substituir href="#" pelo link real do PDF do currículo quando disponível */}
               <a
-                href="#"
+                href="https://drive.google.com/uc?export=download&id=1Js46tvfUHhFnIggZh5PAoDokWRwqQhwJ"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex w-fit items-center gap-2 rounded-full border border-[var(--color-line)] px-5 py-3 text-sm font-medium text-ink transition-colors hover:bg-[var(--color-surface-hover)]"
               >
                 Baixar CV (PDF)

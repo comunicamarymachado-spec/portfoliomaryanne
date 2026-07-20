@@ -127,8 +127,6 @@ sem necessidade:
 
 ## Pendências marcadas no código (buscar por `TROQUE AQUI`)
 
-- `Trajetoria.tsx` — botão "Baixar CV" com `href="#"`, aguardando link do
-  PDF real.
 - `Sobre.tsx` — monograma "MM" como placeholder da segunda foto (seção
   Sobre); trocar por `<Image>` real quando a foto for enviada.
 
