@@ -19,7 +19,7 @@ export default function PortfolioCard({ item, categoryName }: PortfolioCardProps
       target="_blank"
       rel="noopener noreferrer"
       aria-label={`${item.title} — abrir estudo de caso em nova aba`}
-      className={`group relative block aspect-[4/5] overflow-hidden rounded-2xl bg-[var(--color-surface)] ${SPAN_CLASSES[item.span]}`}
+      className={`group relative block aspect-[4/5] h-full w-full overflow-hidden rounded-2xl bg-[var(--color-surface)] sm:aspect-auto ${SPAN_CLASSES[item.span]}`}
     >
       <Image
         src={item.image}
