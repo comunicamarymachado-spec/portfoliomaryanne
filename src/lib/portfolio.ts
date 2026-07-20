@@ -49,6 +49,15 @@ export const PORTFOLIO_CATEGORIES: PortfolioCategory[] = [
         span: "wide",
       },
       {
+        title: "Strateegia",
+        description:
+          "Conteúdo de mídias sociais para a plataforma Strateegia, da TDS Company.",
+        image:
+          "https://i.postimg.cc/vm21GLzR/Save-Inta-com-491896100-18043667531612834-3139438261491044614-n.jpg",
+        link: "https://www.instagram.com/p/DJCqVgrSzHV/?img_index=1",
+        span: "normal",
+      },
+      {
         title: "Agência Prosperitas (Novotel Santos Gonzaga)",
         description:
           "Criativos para campanhas ADS e conteúdo editorial do setor de A&B.",

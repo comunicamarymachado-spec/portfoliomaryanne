@@ -2,6 +2,7 @@ import SectionEyebrow from "@/components/SectionEyebrow";
 import ScrollReveal from "@/components/ScrollReveal";
 import TideDivider from "@/components/TideDivider";
 import PortfolioCard from "@/components/PortfolioCard";
+import PortfolioFeatureCard from "@/components/PortfolioFeatureCard";
 import { PORTFOLIO_CATEGORIES } from "@/lib/portfolio";
 
 export default function Portfolio() {
@@ -32,16 +33,23 @@ export default function Portfolio() {
                   {category.name}
                 </h3>
               </ScrollReveal>
-              <ScrollReveal delay={0.1}>
-                <div className="mt-6 grid grid-cols-1 gap-4 sm:auto-rows-[200px] sm:grid-cols-3 sm:[grid-auto-flow:dense] lg:grid-cols-4">
-                  {category.items.map((item) => (
-                    <PortfolioCard
-                      key={item.title}
-                      item={item}
-                      categoryName={category.name}
-                    />
-                  ))}
-                </div>
+              <ScrollReveal delay={0.1} className="mt-6 block">
+                {category.items.length === 1 ? (
+                  <PortfolioFeatureCard
+                    item={category.items[0]}
+                    categoryName={category.name}
+                  />
+                ) : (
+                  <div className="grid grid-cols-1 gap-4 sm:auto-rows-[200px] sm:grid-cols-3 sm:[grid-auto-flow:dense] lg:grid-cols-4">
+                    {category.items.map((item) => (
+                      <PortfolioCard
+                        key={item.title}
+                        item={item}
+                        categoryName={category.name}
+                      />
+                    ))}
+                  </div>
+                )}
               </ScrollReveal>
             </div>
           ))}
