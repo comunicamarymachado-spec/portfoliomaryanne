@@ -141,10 +141,10 @@ export const PORTFOLIO_CATEGORIES: PortfolioCategory[] = [
     name: "Podcast",
     items: [
       {
-        title: "TDS Company — Videocast",
+        title: "TDS Company - strat'o'cast",
         description:
           "Roteiro e produção do videocast/podcast da marca no YouTube.",
-        image: "https://i.postimg.cc/8C8SVF8j/image.png",
+        image: "https://i.postimg.cc/DyQcd0FB/Whats-App-Image-2026-07-20-at-17-38-50.jpg",
         link: "https://www.youtube.com/@tdscompany/podcasts",
         span: "wide",
       },
