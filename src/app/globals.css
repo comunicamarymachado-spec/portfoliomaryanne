@@ -1,0 +1,191 @@
+@import "tailwindcss";
+
+:root {
+  /* Entardecer no mar — design tokens */
+  --color-ocean: #1b3438;
+  --color-surface: #234145;
+  --color-surface-hover: #2c4c4e;
+  --color-ink: #f5efe6;
+  --color-ink-secondary: #bfcac7;
+  --color-ink-faint: #84a09c;
+  --color-copper: #c9875a;
+  --color-violet: #9c8aae;
+  --color-tide: #5b9da0;
+  --color-tide-light: #9bcbcc;
+  --color-line: rgba(245, 239, 230, 0.12);
+}
+
+@theme inline {
+  --color-ocean: var(--color-ocean);
+  --color-surface: var(--color-surface);
+  --color-surface-hover: var(--color-surface-hover);
+  --color-ink: var(--color-ink);
+  --color-ink-secondary: var(--color-ink-secondary);
+  --color-ink-faint: var(--color-ink-faint);
+  --color-copper: var(--color-copper);
+  --color-violet: var(--color-violet);
+  --color-tide: var(--color-tide);
+  --color-tide-light: var(--color-tide-light);
+  --color-line: var(--color-line);
+
+  --font-display: var(--font-bricolage), "Bricolage Grotesque", sans-serif;
+  --font-body: var(--font-inter), "Inter", sans-serif;
+  --font-mono: var(--font-plex-mono), "IBM Plex Mono", monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-ocean);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+}
+
+::selection {
+  background: var(--color-copper);
+  color: var(--color-ocean);
+}
+
+/* Keyboard focus visibility (accessibility) */
+:focus-visible {
+  outline: 2px solid var(--color-tide-light);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ---------- Grain / noise overlay ---------- */
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.035;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  background-repeat: repeat;
+}
+
+/* ---------- Hero radial glow drift ---------- */
+.glow-copper,
+.glow-tide {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+.glow-copper {
+  top: -10%;
+  right: -10%;
+  width: 42vw;
+  height: 42vw;
+  max-width: 560px;
+  max-height: 560px;
+  background: radial-gradient(circle at center, rgba(201, 135, 90, 0.35), transparent 70%);
+  animation: drift-copper 15s ease-in-out infinite alternate;
+}
+
+.glow-tide {
+  bottom: -15%;
+  left: -10%;
+  width: 46vw;
+  height: 46vw;
+  max-width: 620px;
+  max-height: 620px;
+  background: radial-gradient(circle at center, rgba(91, 157, 160, 0.32), transparent 70%);
+  animation: drift-tide 16s ease-in-out infinite alternate;
+}
+
+@keyframes drift-copper {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    transform: translate(-6%, 6%) scale(1.08);
+  }
+}
+
+@keyframes drift-tide {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    transform: translate(6%, -6%) scale(1.08);
+  }
+}
+
+/* ---------- Wave / tide-line horizontal loop ---------- */
+.wave-track {
+  display: flex;
+  width: 200%;
+  animation: wave-scroll 22s linear infinite;
+}
+
+.wave-track > svg {
+  width: 50%;
+  flex-shrink: 0;
+  display: block;
+}
+
+@keyframes wave-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.tide-line-track {
+  display: flex;
+  width: 200%;
+  animation: wave-scroll 18s linear infinite;
+}
+
+.tide-line-track > svg {
+  width: 50%;
+  flex-shrink: 0;
+  display: block;
+}
+
+/* ---------- Marquee ---------- */
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 28s linear infinite;
+}
+
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .glow-copper,
+  .glow-tide,
+  .wave-track,
+  .tide-line-track,
+  .marquee-track {
+    animation: none !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
