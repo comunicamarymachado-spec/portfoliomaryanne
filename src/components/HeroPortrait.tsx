@@ -17,7 +17,7 @@ export default function HeroPortrait() {
   const y = useTransform(scrollYProgress, [0, 1], [0, shouldReduceMotion ? 0 : 90]);
 
   return (
-    <div ref={ref} className="relative mx-auto w-full max-w-sm sm:max-w-md">
+    <div ref={ref} className="relative mx-auto w-full max-w-xs sm:max-w-sm">
       <motion.div
         style={{ y }}
         className="relative aspect-[4/5] overflow-hidden rounded-3xl border border-[var(--color-line)] bg-[var(--color-surface)] shadow-2xl shadow-black/40"
@@ -27,7 +27,7 @@ export default function HeroPortrait() {
           alt="Retrato de Maryanne Machado, estrategista de marketing e conteúdo"
           fill
           priority
-          sizes="(min-width: 640px) 420px, 90vw"
+          sizes="(min-width: 640px) 360px, 80vw"
           className="object-cover"
         />
       </motion.div>

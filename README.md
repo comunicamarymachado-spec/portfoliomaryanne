@@ -57,7 +57,6 @@ e-mail).
 Busque por `TROQUE AQUI` no código para os itens que dependem de material
 que ainda não foi enviado:
 
-- Link real do PDF do currículo (botão "Baixar CV" na seção Trajetória).
 - Foto real para a seção Sobre (hoje mostra o monograma "MM").
 
 ## Stack
