@@ -14,12 +14,8 @@ type PortfolioCardProps = {
 
 export default function PortfolioCard({ item, categoryName }: PortfolioCardProps) {
   return (
-    <a
-      href={item.link}
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label={`${item.title} — abrir estudo de caso em nova aba`}
-      className={`group relative block aspect-[4/5] h-full w-full overflow-hidden rounded-2xl bg-[var(--color-surface)] sm:aspect-auto ${SPAN_CLASSES[item.span]}`}
+    <article
+      className={`group relative aspect-[4/5] h-full w-full overflow-hidden rounded-2xl bg-[var(--color-surface)] sm:aspect-auto ${SPAN_CLASSES[item.span]}`}
     >
       <Image
         src={item.image}
@@ -36,10 +32,19 @@ export default function PortfolioCard({ item, categoryName }: PortfolioCardProps
         <p className="mt-1 font-display text-base font-medium leading-tight text-ink sm:text-lg">
           {item.title}
         </p>
-        <p className="mt-2 max-h-0 overflow-hidden text-sm leading-snug text-[var(--color-ink-secondary)] opacity-0 transition-all duration-300 group-hover:max-h-24 group-hover:opacity-100 group-focus-visible:max-h-24 group-focus-visible:opacity-100">
+        <p className="mt-2 max-h-0 overflow-hidden text-sm leading-snug text-[var(--color-ink-secondary)] opacity-0 transition-all duration-300 group-hover:max-h-24 group-hover:opacity-100 group-focus-within:max-h-24 group-focus-within:opacity-100">
           {item.description}
         </p>
+        <a
+          href={item.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`Ver completo: ${item.title}`}
+          className="relative z-10 mt-2 inline-flex w-fit items-center gap-1 text-xs font-medium text-copper transition-colors before:absolute before:inset-0 before:content-[''] hover:text-[#d99669]"
+        >
+          Ver completo <span aria-hidden="true">→</span>
+        </a>
       </div>
-    </a>
+    </article>
   );
 }

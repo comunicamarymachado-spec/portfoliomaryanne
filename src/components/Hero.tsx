@@ -2,10 +2,11 @@ import ScrollReveal from "@/components/ScrollReveal";
 import HeroPortrait from "@/components/HeroPortrait";
 import HeroWave from "@/components/HeroWave";
 import SectionEyebrow from "@/components/SectionEyebrow";
+import StatCounter from "@/components/StatCounter";
 
 const STATS = [
-  { value: "6+", label: "Anos de experiência" },
-  { value: "20+", label: "Clientes atendidos" },
+  { value: 6, suffix: "+", label: "Anos de experiência" },
+  { value: 20, suffix: "+", label: "Clientes atendidos" },
 ];
 
 export default function Hero() {
@@ -62,15 +63,12 @@ export default function Hero() {
           <ScrollReveal delay={0.4}>
             <dl className="mt-12 flex gap-10">
               {STATS.map((stat) => (
-                <div key={stat.label}>
-                  <dt className="sr-only">{stat.label}</dt>
-                  <dd className="font-display text-3xl font-semibold text-ink sm:text-4xl">
-                    {stat.value}
-                  </dd>
-                  <p className="mt-1 text-sm text-[var(--color-ink-faint)]">
-                    {stat.label}
-                  </p>
-                </div>
+                <StatCounter
+                  key={stat.label}
+                  value={stat.value}
+                  suffix={stat.suffix}
+                  label={stat.label}
+                />
               ))}
             </dl>
           </ScrollReveal>
