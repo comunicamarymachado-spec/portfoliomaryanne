@@ -1,0 +1,65 @@
+.hero-composition { position: relative; isolation: isolate; margin-block: 28px 42px; min-height: clamp(470px, 46vw, 650px); }
+.hero .hero-composition h1 { position: relative; z-index: 2; padding-block: clamp(70px,8vw,115px) 80px; pointer-events: none; }
+.hero .hero-composition h1 > span { width: fit-content; animation: hero-name-drift 20s ease-in-out infinite; }
+.hero .hero-composition h1 > span:last-child { animation-name: hero-surname-drift; }
+.hero-fragment { position: absolute; display: block; z-index: 1; color: var(--muted); transform-origin: center; }
+.hero-fragment-image { position: relative; width: 100%; overflow: hidden; background: #dfe5d7; }
+.hero-fragment-image img { object-fit: cover; }
+.hero-fragment-caption { display: flex; justify-content: space-between; gap: 10px; padding-top: 10px; font-size: 11px; letter-spacing: .02em; }
+.hero-fragment-science { width: 26%; right: 1%; top: 0; animation: hero-science-drift 20s ease-in-out infinite; }
+.hero-fragment-science .hero-fragment-image { aspect-ratio: 1.12; }
+.hero-fragment-science img { object-position: center 38%; }
+.hero-fragment-product { width: 19%; left: 1%; bottom: 5px; animation: hero-product-drift 20s ease-in-out infinite; }
+.hero-fragment-product .hero-fragment-image { aspect-ratio: 1.5; background: #e4dfd6; }
+.hero-fragment-product img { object-position: center top; }
+.hero-composition:has(.hero-fragment:focus-visible) *, .hero-composition:has(.hero-fragment:hover) *, .hero-composition[data-paused="true"] * { animation-play-state: paused !important; }
+.canvas-pause { position: absolute; right: 0; bottom: 0; width: 44px; height: 44px; display: grid; place-items: center; padding: 0; color: var(--muted); border: 0; background: transparent; opacity: .65; }
+.canvas-pause:hover, .canvas-pause:focus-visible { opacity: 1; }
+@keyframes hero-name-drift { 0%,100% { transform: translateX(0); } 50% { transform: translateX(14px); } }
+@keyframes hero-surname-drift { 0%,100% { transform: translateX(0); } 50% { transform: translateX(-12px); } }
+@keyframes hero-science-drift { 0%,100% { transform: translateY(0) rotate(3deg); } 50% { transform: translateY(16px) rotate(-2deg); } }
+@keyframes hero-product-drift { 0%,100% { transform: translateY(0) rotate(-3deg); } 50% { transform: translateY(-12px) rotate(2deg); } }
+@media (max-width:700px) {
+  .hero-composition { min-height: 475px; margin-block: 22px 28px; }
+  .hero .hero-composition h1 { padding-block: 136px 0; }
+  .hero .hero-composition h1 > span { animation-name: hero-mobile-name; }
+  .hero .hero-composition h1 > span:last-child { animation-direction: reverse; }
+  .hero-fragment-science { width: 130px; right: 8px; top: 0; }
+  .hero-fragment-science .hero-fragment-image { aspect-ratio: 1.6; }
+  .hero-fragment-product { width: 130px; left: 8px; bottom: 0; }
+  .hero-fragment-caption { font-size: 9px; padding-top: 6px; }
+  .canvas-pause { bottom: 0; }
+}
+@keyframes hero-mobile-name { 0%,100% { transform: translateX(0); } 50% { transform: translateX(5px); } }
+@media (prefers-reduced-motion:reduce) {
+  .hero .hero-composition * { animation: none !important; }
+  .canvas-pause { display: none; }
+}
+/* Abstract studies replace project imagery throughout the hero. */
+.hero-fragment-science { width: 30%; right: 0; }
+.hero-fragment-product { width: 25%; }
+.strategy-exploration, .strategy-convergence { display: block; width: 100%; height: auto; stroke: var(--ink); stroke-width: 1; }
+.strategy-orbits { opacity: .4; transform-origin: 150px 125px; animation: strategy-orbit 60s linear infinite; }
+.strategy-center { fill: var(--accent); stroke: none; }
+.strategy-fan { opacity: .45; transform-origin: 180px 100px; animation: strategy-gather 20s ease-in-out infinite; }
+.strategy-direction { stroke: var(--accent); stroke-width: 1.5; stroke-dasharray: 12 88; animation: strategy-progress 20s linear infinite; }
+@keyframes strategy-orbit { to { transform: rotate(360deg); } }
+@keyframes strategy-gather { 0%,100% { transform: scaleY(1); } 50% { transform: scaleY(.4); } }
+@keyframes strategy-progress { to { stroke-dashoffset: -100; } }
+@media (max-width:700px) {
+  .hero-fragment-science { width: 140px; }
+  .hero-fragment-product { width: 160px; }
+}
+/* The convergence study spans the hero below the typography. */
+.hero-fragment-product { width: 100%; left: 0; bottom: 0; animation: none; pointer-events: none; }
+.strategy-convergence { height: 90px; }
+@media (max-width:700px) {
+  .hero-fragment-product { width: 100%; left: 0; bottom: 0; }
+  .strategy-convergence { height: 90px; }
+}
+.strategy-flow-phrase { position: absolute; top: 50%; left: 50%; margin: 0; padding: 4px 24px; background: var(--paper); color: var(--accent); font-family: var(--font-editorial), Georgia, serif; font-size: clamp(21px, 2.4vw, 32px); font-style: italic; line-height: 1.2; white-space: nowrap; transform: translate(-50%, -50%); animation: strategy-phrase-drift 20s ease-in-out infinite; }
+@keyframes strategy-phrase-drift { 0%,100% { transform: translate(calc(-50% - 12px), -50%); } 50% { transform: translate(calc(-50% + 12px), -50%); } }
+@media (max-width:700px) { .strategy-flow-phrase { padding-inline: 12px; font-size: 22px; } }
+/* Keep the name still; motion belongs to the surrounding composition. */
+.hero .hero-composition h1 > span,
+.hero .hero-composition h1 > span:last-child { animation: none; transform: none; }
