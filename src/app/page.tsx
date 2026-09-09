@@ -1,22 +1,9 @@
 import Hero from "@/components/Hero";
 import Portfolio from "@/components/Portfolio";
-import Trajetoria from "@/components/Trajetoria";
+import Pensamento from "@/components/Pensamento";
 import Sobre from "@/components/Sobre";
+import Trajetoria from "@/components/Trajetoria";
 import Contato from "@/components/Contato";
-import TideDivider from "@/components/TideDivider";
-
 export default function Home() {
-  return (
-    <>
-      <Hero />
-      <TideDivider />
-      <Portfolio />
-      <TideDivider />
-      <Trajetoria />
-      <TideDivider />
-      <Sobre />
-      <TideDivider />
-      <Contato />
-    </>
-  );
+  return <><Hero /><Portfolio /><Pensamento /><Sobre /><Trajetoria /><Contato /></>;
 }

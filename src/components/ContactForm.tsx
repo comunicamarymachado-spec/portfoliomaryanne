@@ -51,7 +51,6 @@ export default function ContactForm() {
     <form
       onSubmit={handleSubmit}
       className="mx-auto mt-10 flex w-full max-w-lg flex-col gap-4 text-left"
-      noValidate
     >
       <div>
         <label htmlFor="name" className="mb-1.5 block text-sm text-[var(--color-ink-secondary)]">

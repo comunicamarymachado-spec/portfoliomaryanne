@@ -1,60 +1,20 @@
-import SectionEyebrow from "@/components/SectionEyebrow";
-import ScrollReveal from "@/components/ScrollReveal";
-import TideDivider from "@/components/TideDivider";
-import PortfolioCard from "@/components/PortfolioCard";
-import PortfolioFeatureCard from "@/components/PortfolioFeatureCard";
-import { PORTFOLIO_CATEGORIES } from "@/lib/portfolio";
-
+import Image from "next/image";
+import Link from "next/link";
+import { CASES } from "@/lib/cases";
 export default function Portfolio() {
-  return (
-    <section id="portfolio" className="relative py-24 sm:py-32">
-      <div className="mx-auto max-w-6xl px-6">
-        <ScrollReveal>
-          <SectionEyebrow>Portfólio</SectionEyebrow>
-        </ScrollReveal>
-        <ScrollReveal delay={0.1}>
-          <h2 className="mt-4 max-w-2xl font-display text-3xl font-semibold leading-tight text-ink sm:text-4xl">
-            Estratégia em movimento, do social ao dado.
-          </h2>
-        </ScrollReveal>
-        <ScrollReveal delay={0.2}>
-          <p className="mt-4 max-w-2xl text-base leading-relaxed text-[var(--color-ink-secondary)]">
-            Uma seleção de trabalhos entre mídias sociais, landing pages,
-            email marketing, newsletter e podcast.
-          </p>
-        </ScrollReveal>
-
-        <div className="mt-16 flex flex-col gap-16">
-          {PORTFOLIO_CATEGORIES.map((category, index) => (
-            <div key={category.name}>
-              {index > 0 && <TideDivider className="mb-16" />}
-              <ScrollReveal>
-                <h3 className="font-display text-xl font-semibold text-ink sm:text-2xl">
-                  {category.name}
-                </h3>
-              </ScrollReveal>
-              <ScrollReveal delay={0.1} className="mt-6 block">
-                {category.items.length === 1 ? (
-                  <PortfolioFeatureCard
-                    item={category.items[0]}
-                    categoryName={category.name}
-                  />
-                ) : (
-                  <div className="grid grid-cols-1 gap-4 sm:auto-rows-[200px] sm:grid-cols-3 sm:[grid-auto-flow:dense] lg:grid-cols-4">
-                    {category.items.map((item) => (
-                      <PortfolioCard
-                        key={item.title}
-                        item={item}
-                        categoryName={category.name}
-                      />
-                    ))}
-                  </div>
-                )}
-              </ScrollReveal>
-            </div>
-          ))}
-        </div>
+  return <section id="portfolio" className="selected shell section-space" aria-labelledby="work-title">
+    <div className="section-heading"><p className="eyebrow">Uma seleção</p><h2 id="work-title">Trabalhos selecionados<span className="accent">.</span></h2></div>
+    <div className="selected-list">{CASES.map(project => <article key={project.slug} className={"selected-project " + project.tone}>
+      <Link href={"/projetos/" + project.slug} className="project-visual" data-motion="image" aria-label={"Conhecer projeto: " + project.title}>
+        <Image src={project.image} alt={project.alt} fill sizes="(max-width: 700px) 90vw, (max-width: 1400px) 58vw, 800px" className="project-art" />
+        <span className="visual-link" aria-hidden="true">↗</span>
+      </Link>
+      <div className="project-copy"><p className="project-index">{project.number}<span>{project.discipline}</span></p>
+        <h3><Link href={"/projetos/" + project.slug}>{project.title}</Link></h3><p className="project-summary">{project.summary}</p>
+        <dl className="project-role"><dt>Meu papel</dt><dd>{project.role}</dd></dl>
+        <Link href={"/projetos/" + project.slug} className="text-link">Conhecer projeto <span aria-hidden="true">↗</span></Link>
       </div>
-    </section>
-  );
+    </article>)}</div>
+    <div className="archive-teaser"><p>Outros contextos, formatos e trabalhos.</p><Link href="/arquivo" className="text-link">Explorar o arquivo <span aria-hidden="true">↗</span></Link></div>
+  </section>;
 }
