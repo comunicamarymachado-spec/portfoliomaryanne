@@ -1,3 +1,11 @@
+# Direção vigente — redesign editorial aprovado
+
+A direção aprovada pela proprietária em setembro de 2026 substitui a estética anterior documentada abaixo. Consulte REDESIGN.md para o sistema atual e os limites editoriais. Não reintroduza ondas, glow, contadores, parallax, cards arredondados ou listas de skills na home. Preserve Next.js, o lockfile e o deploy existente na Vercel.
+
+O texto abaixo é mantido apenas como registro histórico, sem prevalecer sobre a direção atual.
+
+---
+
 # Maryanne Machado — Portfólio Pessoal
 
 Site pessoal em Next.js (App Router) + TypeScript + Tailwind CSS v4 + Framer
