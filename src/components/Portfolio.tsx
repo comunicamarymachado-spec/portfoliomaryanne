@@ -15,6 +15,8 @@ export default function Portfolio() {
         <Link href={"/projetos/" + project.slug} className="text-link">Conhecer projeto <span aria-hidden="true">↗</span></Link>
       </div>
     </article>)}</div>
-    <div className="archive-teaser"><p>Outros contextos, formatos e trabalhos.</p><Link href="/arquivo" className="text-link">Explorar o arquivo <span aria-hidden="true">↗</span></Link></div>
+    <div className="archive-teaser"><Link href="/arquivo" className="archive-cta">Ver todos os trabalhos <span aria-hidden="true">↗</span></Link></div>
   </section>;
 }
+
+
