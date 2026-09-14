@@ -3,6 +3,7 @@ import { Instrument_Serif, Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import PageMotion from "@/components/PageMotion";
 import EditorialMotion from "@/components/EditorialMotion";
 
 
@@ -90,7 +91,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
-        <EditorialMotion />
+        <EditorialMotion /><PageMotion />
       </body>
     </html>
   );
