@@ -16,14 +16,14 @@ export const CASES = [
     tone: "science", item: social[0],
   },
   {
-    slug: "strateegia", number: "02", title: "Strateegia", discipline: "Design de conteúdo",
+    slug: "strateegia", number: "02", title: "strateegia", discipline: "Design de conteúdo",
     headline: "A escrita na experiência de produto.",
-    summary: "UX/UI writing para a página da plataforma Strateegia, em colaboração com o designer de produto.",
+    summary: "UX/UI writing para a página da plataforma strateegia, em colaboração com o designer de produto.",
     role: "UX/UI writing", organization: "TDS Company",
-    context: "Trabalho de escrita para a página da plataforma Strateegia, da TDS Company.",
-    contribution: "Atuação como UX/UI writer em colaboração com o designer de produto da plataforma. O escopo apresentado aqui é o trabalho de escrita; a criação visual é colaborativa.",
-    execution: "Conteúdo para a página da plataforma. A captura registra uma parte da página incluída no portfólio original; o endereço da plataforma está disponível abaixo.",
-    image: "/images/work-8.png", alt: "Captura da página da plataforma Strateegia, projeto de UX/UI writing",
+    context: "Trabalho de escrita para a página da plataforma strateegia, da TDS Company.",
+    contribution: "Atuação como UX/UI writer em colaboração com o designer de produto da plataforma. O trabalho nas landing pages de TDS e strateegia foi realizado em colaboração com design de produto, com uso de Figma e RD Station.",
+    execution: "Conteúdo para a página da plataforma e landing page de workshop da strateegia. A captura apresenta a página da plataforma; a landing page do workshop pode ser acessada no link abaixo.",
+    image: "/images/work-8.png", alt: "Captura da página da plataforma strateegia, projeto de UX/UI writing",
     tone: "product", item: landing[0],
   },
   {
@@ -37,3 +37,4 @@ export const CASES = [
     tone: "podcast", item: podcast[0],
   },
 ];
+
