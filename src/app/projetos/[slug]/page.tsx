@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { CASES } from "@/lib/cases";
+import { ALL_CASES as CASES } from "@/lib/client-cases";
 import assets from "@/lib/image-assets.json";
 import Contato from "@/components/Contato";
 
@@ -25,11 +25,21 @@ export default async function ProjectPage({ params }: Props) {
     <article className="case-page shell">
       <Link href="/#portfolio" className="text-link back-link">← Trabalhos selecionados</Link>
       <header className="case-header"><p className="eyebrow">{project.number} / {project.discipline}</p><h1>{project.title}<span className="accent">.</span></h1><p className="case-headline">{project.headline}</p></header>
-      <dl className="case-facts"><div><dt>Organização</dt><dd>{project.organization}</dd></div><div><dt>Meu papel</dt><dd>{project.role}</dd></div><div><dt>Formato</dt><dd>{project.slug === "incubascience" ? "Redes sociais" : project.discipline === "Design de conteúdo" ? "Página de produto" : "Videocast e podcast"}</dd></div></dl>
-      <div className="case-narrative"><section><h2>Contexto</h2><p>{project.context}</p></section><section><h2>Minha contribuição</h2><p>{project.contribution}</p></section></div>
-      <figure className={"case-figure " + project.tone} data-motion="image"><a href={project.image} target="_blank" rel="noopener noreferrer" aria-label={"Ampliar peça: " + project.title}><Image src={project.image} alt={project.alt} width={asset.width} height={asset.height} sizes="(max-width: 700px) 90vw, 1000px" /></a><figcaption>Peça do projeto · {project.title}<a href={project.image} target="_blank" rel="noopener noreferrer">Ampliar imagem ↗</a></figcaption></figure>
-      <section className="case-execution"><h2>Trabalho publicado</h2><div><p>{project.execution}</p><a href={project.item.link} target="_blank" rel="noopener noreferrer" className="text-link">{project.slug === "strat-o-cast" ? "Assistir no YouTube" : project.slug === "strateegia" ? "Visitar a plataforma" : "Ver publicação original"} <span aria-hidden="true">↗</span></a></div></section>
-      <nav className="next-project" aria-label="Outros projetos"><p className="eyebrow">Próximo trabalho</p><Link href={"/projetos/" + next.slug}>{next.title}<span aria-hidden="true">↗</span></Link><Link href="/arquivo" className="text-link">Ver arquivo completo →</Link></nav>
+      <dl className="case-facts"><div><dt>Organização</dt><dd>{project.organization}</dd></div><div><dt>Meu papel</dt><dd>{project.role}</dd></div><div><dt>Formato</dt><dd>{project.formats}</dd></div></dl>
+      {project.materials.length > 0 ? <p className="case-brief">{project.context}</p> : <div className="case-narrative"><section><h2>Contexto</h2><p>{project.context}</p></section><section><h2>Minha contribuição</h2><p>{project.contribution}</p></section></div>}
+      {project.materials.length === 0 && <figure className={"case-figure " + project.tone} data-motion="image"><a href={project.image} target="_blank" rel="noopener noreferrer" aria-label={"Ampliar peça: " + project.title}><Image src={project.image} alt={project.alt} width={asset.width} height={asset.height} sizes="(max-width: 700px) 90vw, 1000px" /></a><figcaption>Peça do projeto · {project.title}<a href={project.image} target="_blank" rel="noopener noreferrer">Ampliar imagem</a></figcaption></figure>}
+      {project.materials.length === 0 && <section className="case-execution"><h2>Trabalho publicado</h2><div><p>{project.execution}</p><a href={project.item.link} target="_blank" rel="noopener noreferrer" className="case-action">{project.slug === "strat-o-cast" ? "Assistir no YouTube" : project.slug === "strateegia" ? "Visitar a plataforma" : "Ver publicação original"}</a>{project.item.relatedLinks?.map(link => <a key={link.href} href={link.href} target="_blank" rel="noopener noreferrer" className="case-action">{link.label}</a>)}</div></section>}
+      {project.process.length > 0 && <section className="case-process" aria-labelledby="process-title"><h2 id="process-title">Como os trabalhos se conectam</h2><ol>{project.process.map((step, i)=><li key={step.title}><span className="eyebrow">0{i + 1}</span><div><h3>{step.title}</h3><p>{step.text}</p></div></li>)}</ol></section>}
+      {project.materials.length > 0 && <section className="case-materials" aria-labelledby="materials-title"><h2 id="materials-title">A narrativa nos canais</h2>{project.materials.map((material,i)=>{
+        const visual = assets.find(a=>a.src===material.image);
+        return <article className="case-material" key={material.title}>
+          <div className="case-material-copy"><p className="eyebrow">{String(i+1).padStart(2,"0")}</p><h3>{material.title}</h3><p>{material.text}</p>{material.link && <a className="case-action" href={material.link} target="_blank" rel="noopener noreferrer">{material.label || "Ver trabalho"}</a>}</div>
+          {visual && <figure className={material.screen ? "screen-mockup" : undefined} data-motion="image"><a href={visual.src} target="_blank" rel="noopener noreferrer" aria-label={"Ampliar: " + material.title}><Image src={visual.src} alt={material.title} width={visual.width} height={visual.height} sizes="(max-width:700px) 90vw, 65vw" /></a><figcaption>{material.title}<a href={visual.src} target="_blank" rel="noopener noreferrer">Ampliar</a></figcaption></figure>}
+        </article>;
+      })}</section>}
+      <nav className="next-project" aria-label="Outros projetos"><p className="eyebrow">Próximo trabalho</p><Link href={"/projetos/" + next.slug}>{next.title}</Link><Link href="/arquivo" className="text-link">Ver arquivo completo →</Link></nav>
     </article><Contato />
   </>;
 }
+
+
