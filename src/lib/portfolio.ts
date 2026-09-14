@@ -3,6 +3,7 @@ export type PortfolioItem = {
   description: string;
   image: string;
   link: string;
+  relatedLinks?: { label: string; href: string }[];
   /** Controla o tamanho do bloco no mosaico. */
   span: "tall" | "wide" | "normal";
 };
@@ -49,9 +50,16 @@ export const PORTFOLIO_CATEGORIES: PortfolioCategory[] = [
         span: "wide",
       },
       {
-        title: "Strateegia",
+        title: "Semine — CODE.NE",
+        description: "CODE.NE — programa de combate à desertificação do Nordeste, com colaboração da Semine junto ao CETENE/MCTI. Registro em Conceição das Crioulas, Salgueiro (PE).",
+        image: "/images/semine-conceicao-das-crioulas.png",
+        link: "https://www.instagram.com/p/DUHoqWOkc9x/",
+        span: "wide",
+      },
+      {
+        title: "strateegia",
         description:
-          "Conteúdo de mídias sociais para a plataforma Strateegia, da TDS Company.",
+          "Conteúdo de mídias sociais para a plataforma strateegia, da TDS Company.",
         image:
           "https://i.postimg.cc/vm21GLzR/Save-Inta-com-491896100-18043667531612834-3139438261491044614-n.jpg",
         link: "https://www.instagram.com/p/DJCqVgrSzHV/?img_index=1",
@@ -87,17 +95,30 @@ export const PORTFOLIO_CATEGORIES: PortfolioCategory[] = [
     name: "Landing Pages",
     items: [
       {
-        title: "TDS Company — Plataforma Strateegia",
+        title: "TDS Company — Plataforma strateegia",
         description:
-          "UX/UI writer em colaboração com o designer de produto da plataforma.",
+          "UX/UI writing em colaboração com design de produto. Processo de trabalho com Figma e RD Station.",
         image: "https://i.postimg.cc/DfGn4sfL/image.png",
         link: "https://strateegia.digital/pt",
+        relatedLinks: [{ label: "Ver landing page do workshop", href: "https://www-strateegia-digital.rds.land/strateegia-bettbrasil" }],
+        span: "wide",
+      },
+      {
+        title: "strateegia — Workshop",
+ description: "Landing page em colaboração com design de produto, com Figma e RD Station.",
+ image: "/images/strateegia-bett-lp.png", link: "https://www-strateegia-digital.rds.land/strateegia-bettbrasil", span: "wide",
+ },
+ {
+ title: "Semine — Plataforma",
+        description: "Landing page de apresentação da plataforma Semine e de suas soluções para a agricultura, desenvolvida em colaboração com IA.",
+        image: "/images/semine-plataforma.png",
+        link: "https://app.semine.ag/",
         span: "wide",
       },
       {
         title: "TDS Company — Landing page de e-book",
         description:
-          "Página de conversão para captação de leads via e-book sobre paraconsistência de estratégias.",
+          "Página de conversão para captação de leads via e-book sobre paraconsistência de estratégias. Trabalho em colaboração com design de produto, com uso de Figma e RD Station.",
         image: "https://i.postimg.cc/rygswxf1/image.png",
         link: "https://biblioteca.tds.company/tds-books-exploring-the-paraconsistency-of-strategies-in-minimally-complex-businesses",
         span: "tall",
@@ -127,6 +148,7 @@ export const PORTFOLIO_CATEGORIES: PortfolioCategory[] = [
   {
     name: "Newsletter",
     items: [
+      { title: "IncubaNews — Proposta de newsletter", description: "Proposta editorial para conectar o ecossistema de inovação. Visualização em mockup.", image: "/images/incubanews-proposta.png", link: "/images/incubanews-proposta.png", span: "wide" },
       {
         title: "Bits and Tips (TDS Company)",
         description:
@@ -150,4 +172,8 @@ export const PORTFOLIO_CATEGORIES: PortfolioCategory[] = [
       },
     ],
   },
+  { name: "Apresentações institucionais", items: [{ title: "IncubaScience — Apresentação institucional", description: "Apresentação da incubadora e de sua atuação. Visualização em mockup.", image: "/images/incubascience-apresentacao.png", link: "/images/incubascience-apresentacao.png", span: "wide" }] },
 ];
+
+
+
